@@ -30,39 +30,6 @@ class PetController(BaseController):
     def __init__(self, config):
         super(PetController, self).__init__(config)
 
-    def inpet(self,
-              body):
-        """Does a POST request to /pet.
-
-        Add a new pet to the store
-
-        Args:
-            body (Pet): Pet object that needs to be added to the store
-
-        Returns:
-            void: Response from the API.
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        return super().new_api_call_builder.request(
-            RequestBuilder().server(Server.SERVER1)
-            .path('/pet')
-            .http_method(HttpMethodEnum.POST)
-            .body_param(Parameter()
-                        .value(body))
-            .header_param(Parameter()
-                          .key('Content-Type')
-                          .value('application/json'))
-            .body_serializer(APIHelper.json_serialize)
-            .auth(Single('global'))
-        ).execute()
-
     def upload_file(self,
                     pet_id,
                     additional_metadata=None,
@@ -111,6 +78,39 @@ class PetController(BaseController):
             ResponseHandler()
             .deserializer(APIHelper.json_deserialize)
             .deserialize_into(ApiResponse.from_dictionary)
+        ).execute()
+
+    def inpet(self,
+              body):
+        """Does a POST request to /pet.
+
+        Add a new pet to the store
+
+        Args:
+            body (Pet): Pet object that needs to be added to the store
+
+        Returns:
+            void: Response from the API.
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        return super().new_api_call_builder.request(
+            RequestBuilder().server(Server.SERVER1)
+            .path('/pet')
+            .http_method(HttpMethodEnum.POST)
+            .body_param(Parameter()
+                        .value(body))
+            .header_param(Parameter()
+                          .key('Content-Type')
+                          .value('application/json'))
+            .body_serializer(APIHelper.json_serialize)
+            .auth(Single('global'))
         ).execute()
 
     def update_an_pet(self,
@@ -265,42 +265,6 @@ class PetController(BaseController):
             .local_error('404', 'Pet not found', APIException)
         ).execute()
 
-    def delete_pet(self,
-                   pet_id,
-                   api_key=None):
-        """Does a DELETE request to /pet/{petId}.
-
-        Deletes a pet
-
-        Args:
-            pet_id (long|int): Pet id to delete
-            api_key (string, optional): TODO: type description here.
-
-        Returns:
-            void: Response from the API.
-
-        Raises:
-            APIException: When an error occurs while fetching the data from
-                the remote API. This exception includes the HTTP Response
-                code, an error message, and the HTTP body that was received in
-                the request.
-
-        """
-
-        return super().new_api_call_builder.request(
-            RequestBuilder().server(Server.SERVER1)
-            .path('/pet/{petId}')
-            .http_method(HttpMethodEnum.DELETE)
-            .template_param(Parameter()
-                            .key('petId')
-                            .value(pet_id)
-                            .should_encode(True))
-            .header_param(Parameter()
-                          .key('api_key')
-                          .value(api_key))
-            .auth(Single('global'))
-        ).execute()
-
     def update_pet_with_form(self,
                              pet_id,
                              name=None,
@@ -342,5 +306,41 @@ class PetController(BaseController):
             .header_param(Parameter()
                           .key('content-type')
                           .value('application/x-www-form-urlencoded'))
+            .auth(Single('global'))
+        ).execute()
+
+    def delete_pet(self,
+                   pet_id,
+                   api_key=None):
+        """Does a DELETE request to /pet/{petId}.
+
+        Deletes a pet
+
+        Args:
+            pet_id (long|int): Pet id to delete
+            api_key (string, optional): TODO: type description here.
+
+        Returns:
+            void: Response from the API.
+
+        Raises:
+            APIException: When an error occurs while fetching the data from
+                the remote API. This exception includes the HTTP Response
+                code, an error message, and the HTTP body that was received in
+                the request.
+
+        """
+
+        return super().new_api_call_builder.request(
+            RequestBuilder().server(Server.SERVER1)
+            .path('/pet/{petId}')
+            .http_method(HttpMethodEnum.DELETE)
+            .template_param(Parameter()
+                            .key('petId')
+                            .value(pet_id)
+                            .should_encode(True))
+            .header_param(Parameter()
+                          .key('api_key')
+                          .value(api_key))
             .auth(Single('global'))
         ).execute()

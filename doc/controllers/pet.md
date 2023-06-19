@@ -14,14 +14,47 @@ pet_controller = client.pet
 
 ## Methods
 
-* [Inpet](../../doc/controllers/pet.md#inpet)
 * [Upload File](../../doc/controllers/pet.md#upload-file)
+* [Inpet](../../doc/controllers/pet.md#inpet)
 * [Update an Pet](../../doc/controllers/pet.md#update-an-pet)
 * [Find Pet in the Status](../../doc/controllers/pet.md#find-pet-in-the-status)
 * [Find Pets an Tags](../../doc/controllers/pet.md#find-pets-an-tags)
 * [Get Pet by Id](../../doc/controllers/pet.md#get-pet-by-id)
-* [Delete Pet](../../doc/controllers/pet.md#delete-pet)
 * [Update Pet With Form](../../doc/controllers/pet.md#update-pet-with-form)
+* [Delete Pet](../../doc/controllers/pet.md#delete-pet)
+
+
+# Upload File
+
+uploads an image
+
+```python
+def upload_file(self,
+               pet_id,
+               additional_metadata=None,
+               file=None)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `pet_id` | `long\|int` | Template, Required | ID of pet to update |
+| `additional_metadata` | `string` | Form, Optional | Additional data to pass to server |
+| `file` | `typing.BinaryIO` | Form, Optional | file to upload |
+
+## Response Type
+
+[`ApiResponse`](../../doc/models/api-response.md)
+
+## Example Usage
+
+```python
+pet_id = 152
+
+result = pet_controller.upload_file(pet_id)
+print(result)
+```
 
 
 # Inpet
@@ -62,39 +95,6 @@ print(result)
 | HTTP Status Code | Error Description | Exception Class |
 |  --- | --- | --- |
 | 405 | Invalid input | `APIException` |
-
-
-# Upload File
-
-uploads an image
-
-```python
-def upload_file(self,
-               pet_id,
-               additional_metadata=None,
-               file=None)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `pet_id` | `long\|int` | Template, Required | ID of pet to update |
-| `additional_metadata` | `string` | Form, Optional | Additional data to pass to server |
-| `file` | `typing.BinaryIO` | Form, Optional | file to upload |
-
-## Response Type
-
-[`ApiResponse`](../../doc/models/api-response.md)
-
-## Example Usage
-
-```python
-pet_id = 152
-
-result = pet_controller.upload_file(pet_id)
-print(result)
-```
 
 
 # Update an Pet
@@ -254,44 +254,6 @@ print(result)
 | 404 | Pet not found | `APIException` |
 
 
-# Delete Pet
-
-Deletes a pet
-
-```python
-def delete_pet(self,
-              pet_id,
-              api_key=None)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `pet_id` | `long\|int` | Template, Required | Pet id to delete |
-| `api_key` | `string` | Header, Optional | - |
-
-## Response Type
-
-`void`
-
-## Example Usage
-
-```python
-pet_id = 152
-
-result = pet_controller.delete_pet(pet_id)
-print(result)
-```
-
-## Errors
-
-| HTTP Status Code | Error Description | Exception Class |
-|  --- | --- | --- |
-| 400 | Invalid ID supplied | `APIException` |
-| 404 | Pet not found | `APIException` |
-
-
 # Update Pet With Form
 
 Updates a pet in the store with form data
@@ -329,4 +291,42 @@ print(result)
 | HTTP Status Code | Error Description | Exception Class |
 |  --- | --- | --- |
 | 405 | Invalid input | `APIException` |
+
+
+# Delete Pet
+
+Deletes a pet
+
+```python
+def delete_pet(self,
+              pet_id,
+              api_key=None)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `pet_id` | `long\|int` | Template, Required | Pet id to delete |
+| `api_key` | `string` | Header, Optional | - |
+
+## Response Type
+
+`void`
+
+## Example Usage
+
+```python
+pet_id = 152
+
+result = pet_controller.delete_pet(pet_id)
+print(result)
+```
+
+## Errors
+
+| HTTP Status Code | Error Description | Exception Class |
+|  --- | --- | --- |
+| 400 | Invalid ID supplied | `APIException` |
+| 404 | Pet not found | `APIException` |
 
