@@ -13,15 +13,15 @@ The package is compatible with Python versions `3 >=3.7, <= 3.11`.
 Install the package from PyPi using the following pip command:
 
 ```python
-pip install repo-test-sdk==2.3.5
+pip install repo-test-sdk==2.3.6
 ```
 
 You can also view the package at:
-https://pypi.python.org/pypi/repo-test-sdk/2.3.5
+https://pypi.python.org/pypi/repo-test-sdk/2.3.6
 
 ## Initialize the API Client
 
-**_Note:_** Documentation for the client can be found [here.](https://www.github.com/sdks-io/pyhton/tree/2.3.5/doc/client.md)
+**_Note:_** Documentation for the client can be found [here.](https://www.github.com/sdks-io/pyhton/tree/2.3.6/doc/client.md)
 
 The following parameters are configurable for the API Client:
 
@@ -55,13 +55,13 @@ This API uses `Custom Authentication`.
 
 ## List of APIs
 
-* [Pet](https://www.github.com/sdks-io/pyhton/tree/2.3.5/doc/controllers/pet.md)
-* [Store](https://www.github.com/sdks-io/pyhton/tree/2.3.5/doc/controllers/store.md)
-* [User](https://www.github.com/sdks-io/pyhton/tree/2.3.5/doc/controllers/user.md)
+* [Pet](https://www.github.com/sdks-io/pyhton/tree/2.3.6/doc/controllers/pet.md)
+* [Store](https://www.github.com/sdks-io/pyhton/tree/2.3.6/doc/controllers/store.md)
+* [User](https://www.github.com/sdks-io/pyhton/tree/2.3.6/doc/controllers/user.md)
 
 ## Classes Documentation
 
-* [Utility Classes](https://www.github.com/sdks-io/pyhton/tree/2.3.5/doc/utility-classes.md)
-* [HttpResponse](https://www.github.com/sdks-io/pyhton/tree/2.3.5/doc/http-response.md)
-* [HttpRequest](https://www.github.com/sdks-io/pyhton/tree/2.3.5/doc/http-request.md)
+* [Utility Classes](https://www.github.com/sdks-io/pyhton/tree/2.3.6/doc/utility-classes.md)
+* [HttpResponse](https://www.github.com/sdks-io/pyhton/tree/2.3.6/doc/http-response.md)
+* [HttpRequest](https://www.github.com/sdks-io/pyhton/tree/2.3.6/doc/http-request.md)
 
